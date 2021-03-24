@@ -11,7 +11,11 @@ import pickle
 import os
 import numpy as np
 
+from . import get_songs
 
+songs, durations = get_songs('..music/training_songs')
+
+# === Helper functions
 def list_to_dict(x):
     unique = sorted(set([item for item in x]))
     Dict = dict((i, j) for j, i in enumerate(x))
@@ -23,6 +27,9 @@ def construct_melody(x, dictionary, sequence_length):
     sequence_window = x[i:i + sequence_length]
     result.append([dictionary[char] for char in sequence_window])
   return result
+# ===
+
+# === One-hot encode notes
 
 def get_TrainingData(notes, durations, sequence_length):
 
@@ -41,16 +48,15 @@ def get_TrainingData(notes, durations, sequence_length):
 
     return note_to_int, Notes_, durations_
 
-sequence_length = 32
 int_to_note, Notes_, durations_ = get_TrainingData(notes, durations, sequence_length)
 
 """ Seeding """
 np.random.seed(42)
 tf.random.set_seed(42)
 
-""" Dataset """
 
 """ Hyperparameters """
+sequence_length = 60
 latent_dim = 2
 input_sample = Notes_.shape[0]
 input_notes = Notes_.shape[1]
