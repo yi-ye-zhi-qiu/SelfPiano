@@ -6,6 +6,7 @@
 
 [See the final product](http://liamisaacs.com/kitchensoundscapes)
 
+[See the blog post](l-teach-a-computer-to-reflect-the-sounds-of-a-space-218aa817bcc)
 
 Project was presented, [slides!](final_presentation.pdf)
 
